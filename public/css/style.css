@@ -1,0 +1,116 @@
+.base-bg{
+      height: 100vh;
+      background-color: #f4f1ec;
+      /* overflow: hidden; */
+}
+
+.icon-background {
+      position: fixed;
+      top: 56px; /* ナビバーの高さ分下げる */
+      left: 0;
+      width: 100px;
+      height: calc(100% - 56px); /* 残りの高さに */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      opacity: 0.2;
+      /* color: #c9a066; */
+      color: #b89e80;
+      /* color: #d6b98c; */
+      font-size: 32px;
+      z-index: 0;
+}
+
+.icon-sm{
+  font-size: 2rem;
+}
+
+.icon-md {
+  font-size: 3.5rem;
+}
+
+.icon-lg {
+  font-size: 9rem;
+}
+
+.avatar-sm {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+}
+
+.avatar-md {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+}
+
+.avatar-lg {
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
+}
+
+.image-bookling {
+  width: 10rem;
+  height: auto;
+  object-fit: cover;
+}
+
+.image-raised-bookling {
+  width: 8rem;
+  height: auto;
+  object-fit: cover;
+}
+
+
+.image-lg {
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
+}
+
+.xsmall {
+  font-size: 0.65rem;
+}
+
+/* profile.show book shelf */
+.book-img {
+  height: 300px;
+  width: auto;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.book-img:hover {
+  transform: scale(1.05);
+}
+
+.shelf {
+  height: 35px;
+  background: url('../images/wood-grain-100.jpg') center/cover no-repeat;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  box-shadow: inset 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* タブレット幅以下では本の画像一列。棚なし */
+/* スマホ幅以下に変更する場合は768px */
+/* [later] 3冊目と４冊目のマージンx修正 */
+@media (max-width: 992px) {
+  .shelf {
+    display: none;
+  }
+
+  .book-row {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  .book-img {
+    height: auto;
+    width: 70%;  /* スマホでちょうど良いサイズに調整 */
+    margin-bottom: 1rem;
+  }
+}
