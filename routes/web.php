@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
 
 # Admin Controllers
 use App\Http\Controllers\Admin\UsersController;
@@ -27,10 +28,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::patch('/book/{book_id}/update', [BookController::class, 'update'])->name('book.update');
     Route::delete('/book/{book_id}/destroy', [BookController::class, 'destroy'])->name('book.destroy');
 
-    //Profile
+    // Profile
     Route::get('/profile/{user_id}/show', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+    // Comment
+    Route::post('/comment/{book_id}/store', [CommentController::class, 'store'])->name('comment.store');
+    Route::delete('/comment/{comment_id}/destroy', [CommentController::class, 'destroy'])->name('comment.destroy');
 
     //Admin
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){

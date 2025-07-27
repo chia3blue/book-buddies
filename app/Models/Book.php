@@ -17,4 +17,10 @@ class Book extends Model
     {
         return $this->belongsTo(UserCreature::class);
     }
+
+    #To get all the comments of a book
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

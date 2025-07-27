@@ -22,5 +22,5 @@
 
     <p class="text-muted xsmall">Posted Date: <span class="text-uppercase">{{ date('M d, Y', strtotime($book->created_at)) }}</span></p>
 
-    {{-- [soon] Include comments here --}}
+    @include('users.books.contents.comments')
 </div>

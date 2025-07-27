@@ -3,6 +3,17 @@
 @section('title', 'Show Book Post')
     
 @section('content')
+  <style>
+    .col-6{
+      overflow-y: scroll;
+    }
+
+    .card-body{
+      position: absolute;
+      top: 65px;
+    }
+  </style>
+
     <div class="row border shadow">
       <div class="col p-0 border-end text-center">
         @if ($book->cover_photo)
@@ -82,7 +93,45 @@
                 &nbsp;{{ $book->impression }}
               </p>
 
-              {{-- [soon] comments --}}
+              {{-- comments --}}
+              <div class="mt-4">
+                <form action="{{ route('comment.store', $book->id) }}" method="post">
+                  @csrf
+
+                  <div class="input-group">
+                    <textarea name="comment_body{{ $book->id }}" rows="1" class="form-control form-control-sm" placeholder="Add a comment...">{{ old('comment_body' . $book->id ) }}</textarea>
+                    <button type="submit" class="btn btn-outline-secondary btn-sm" title="Book"><i class="fa-regular fa-paper-plane"></i></button>
+                  </div>
+                  @error('comment_body' . $book->id)
+                      <div class="text-danger small">{{ $message }}</div>
+                  @enderror
+                </form>
+
+                {{-- Show all comments --}}
+                @if ($book->comments->isNotEmpty())
+                  <ul class="list-group mt-2">
+                    @foreach ($book->comments as $comment)
+                      <li class="list-group-item border-0 p-0 mb-2">
+                        <a href="{{ route('profile.show', $comment->user->id) }}" class="text-decoration-none text-dark fw-bold">{{ $comment->user->name }}</a>
+                        &nbsp;
+                        <p class="d-inline fw-light">{{ $comment->body }}</p>
+
+                        <form action="{{ route('comment.destroy', $comment->id) }}" method="post">
+                          @csrf
+                          @method('DELETE')
+
+                          <span class="text-uppercase text-muted xsmall">{{ date('M d, Y', strtotime($comment->created_at)) }}</span>
+
+                          {{-- If the auth user is the owner of the comment, show a delete button --}}
+                          @if (Auth::user()->id === $comment->user->id)
+                            <button type="submit" class="border-0 bg-transparent text-danger p-0 xsmall">Delete</button>
+                          @endif
+                        </form>
+                      </li>
+                    @endforeach
+                  </ul>
+                @endif
+              </div>
             </div>
           </div>
         </div>
