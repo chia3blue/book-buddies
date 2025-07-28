@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
+
 
 # Admin Controllers
 use App\Http\Controllers\Admin\UsersController;
@@ -36,6 +38,10 @@ Route::group(['middleware' => 'auth'], function(){
     // Comment
     Route::post('/comment/{book_id}/store', [CommentController::class, 'store'])->name('comment.store');
     Route::delete('/comment/{comment_id}/destroy', [CommentController::class, 'destroy'])->name('comment.destroy');
+
+    // Like
+    Route::post('/like/{book_id}/store', [LikeController::class, 'store'])->name('like.store');
+    Route::delete('/like/{book_id}/destroy', [LikeController::class, 'destroy'])->name('like.destroy');
 
     //Admin
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){

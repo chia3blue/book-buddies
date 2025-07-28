@@ -100,4 +100,9 @@ public function getCurrentCreatureAttribute()
             ->where('current', false)
             ->with('creature');
     }
+
+    // public function likes()
+    // {
+    //     return $this->hasMany(Like::class);
+    // }
 }

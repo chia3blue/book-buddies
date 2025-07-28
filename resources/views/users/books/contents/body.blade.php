@@ -14,13 +14,36 @@
   </a>
 </div>
 <div class="card-body">
-   {{-- [soon] heart button + no. of likes + categories --}}
-   {{-- <a href="#" class="text-decoration-none text-dark fw-bold">{{ $book->user->name }}</a> --}}
-   {{-- &nbsp; --}}
+   {{-- heart button + no. of likes + categories --}}
+   <div class="row align-items-center">
+    <div class="col-auto">
+      @if ($book->isLiked())
+        <form action="{{ route('like.destroy', $book->id) }}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-sm p-0"><i class="fa-solid fa-heart text-danger"></i></button>
+      </form> 
+      @else
+        <form action="{{ route('like.store', $book->id) }}" method="post">
+        @csrf
+
+        <button type="submit" class="btn btn-sm shadow-none p-0"><i class="fa-regular fa-heart"></i></button>
+      </form>
+      @endif
+    </div>
+    <div class="col-auto px-0">
+      <span>{{ $book->likes->count() }}</span>
+    </div>
+    <div class="col text-end">
+      {{-- [soon] categories --}}
+    </div>
+   </div>
     
+   {{-- impression & posted date --}}
     <p style="text-indent: 2em;">{{ $book->impression }}</p>
 
     <p class="text-muted xsmall">Posted Date: <span class="text-uppercase">{{ date('M d, Y', strtotime($book->created_at)) }}</span></p>
 
+    {{-- comments --}}
     @include('users.books.contents.comments')
 </div>

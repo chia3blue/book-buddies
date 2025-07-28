@@ -74,12 +74,32 @@
               </div>
             </div>
             <div class="card-body w-100 bg-white">
-              {{-- [soon] heart button + no. of likes + categories --}}
+              {{-- heart button + no. of likes + categories --}}
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  @if ($book->isLiked())
+                    <form action="{{ route('like.destroy', $book->id) }}" method="post">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-sm p-0"><i class="fa-solid fa-heart text-danger"></i></button>
+                    </form> 
+                  @else
+                    <form action="{{ route('like.store', $book->id) }}" method="post">
+                      @csrf
 
-              {{-- book's impression --}}
+                      <button type="submit" class="btn btn-sm shadow-none p-0"><i class="fa-regular fa-heart"></i></button>
+                    </form>
+                  @endif
+                </div>
+                <div class="col-auto px-0">
+                  <span>{{ $book->likes->count() }}</span>
+                </div>
+                <div class="col text-end">
+                  {{-- [soon] book categories --}}
+                </div>
+              </div>
 
-              <p class="text-muted xsmall">Posted Date: <span class="text-uppercase">{{ date('M d, Y', strtotime($book->created_at)) }}</span></p>
-
+              {{-- book's impression & posted date & title & author --}}
               <p><span class="text-muted small">Book Title:</span> 
                 &nbsp;<span class="fw-bold ">{{ $book->title }}</span>
               </p>
@@ -92,6 +112,8 @@
                 <br>
                 &nbsp;{{ $book->impression }}
               </p>
+
+              <p class="text-muted xsmall">Posted Date: <span class="text-uppercase">{{ date('M d, Y', strtotime($book->created_at)) }}</span></p>
 
               {{-- comments --}}
               <div class="mt-4">

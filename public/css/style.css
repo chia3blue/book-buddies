@@ -52,6 +52,10 @@
   object-fit: cover;
 }
 
+.fa-heart {
+  font-size: 1.5rem;
+}
+
 .image-bookling {
   width: 10rem;
   height: auto;
