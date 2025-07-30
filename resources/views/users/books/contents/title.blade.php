@@ -33,9 +33,13 @@
             {{-- open delete modal --}}
             @include('users.books.contents.modals.delete')
         @else
-            {{-- If you are not the owner of the book post, show an unfollow button --}}
+            {{-- If you are not the owner of the book post, show an (unfollow) button --}}
             <div class="dropdown-menu">
-              <a href="#">soon - unfollow</a>
+              <form action="{{ route('follow.destroy', $book->user->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="dropdown-item text-danger">Unfollow</button>
+              </form>
             </div>
         @endif
       </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\FollowController;
 
 
 # Admin Controllers
@@ -34,6 +35,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/profile/{user_id}/show', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/{user_id}/followers', [ProfileController::class, 'followers'])->name('profile.followers');
+    Route::get('/profile/{user_id}/following', [ProfileController::class, 'following'])->name('profile.following');
 
     // Comment
     Route::post('/comment/{book_id}/store', [CommentController::class, 'store'])->name('comment.store');
@@ -42,6 +45,10 @@ Route::group(['middleware' => 'auth'], function(){
     // Like
     Route::post('/like/{book_id}/store', [LikeController::class, 'store'])->name('like.store');
     Route::delete('/like/{book_id}/destroy', [LikeController::class, 'destroy'])->name('like.destroy');
+
+    // Follow
+    Route::post('/follow/{user_id}/store', [FollowController::class, 'store'])->name('follow.store');
+    Route::delete('/follow/{user_id}/destroy', [FollowController::class, 'destroy'])->name('follow.destroy');
 
     //Admin
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){

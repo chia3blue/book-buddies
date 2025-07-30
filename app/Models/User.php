@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 # creature feature用
 # modelでは不要
@@ -105,4 +106,25 @@ public function getCurrentCreatureAttribute()
     // {
     //     return $this->hasMany(Like::class);
     // }
+
+    // Follow Feature
+    # To get all the followers of user
+    public function followers()
+    {
+        return $this->hasMany(Follow::class, 'following_id');
+    }
+
+    # To get all the users that the user is following
+    public function following()
+    {
+        return $this->hasMany(Follow::class, 'follower_id');
+    }
+
+    public function isFollowed()
+    {
+        return $this->followers()->where('follower_id', Auth::user()->id)->exists();
+        // Auth::user()->id is the follower_id
+        // Firstly, get all the followers of the user ($this->followers()), Then, from that list, search for the auth user
+        // from the follower column.
+    }
 }

@@ -6,11 +6,10 @@
     <div class="row gx-5">
         {{-- left side/ all book posts --}}
         <div class="col-8">
-            @forelse ($all_books as $book)
+            {{-- @forelse ($all_books as $book) --}}
+            @forelse ($home_books as $book)
                 <div class="card mb-4">
-                    {{-- title --}}
                     @include('users.books.contents.title')
-                    {{-- body --}}
                     @include('users.books.contents.body')
                 </div>
             @empty
@@ -25,7 +24,7 @@
 
         {{-- right side --}}
         <div class="col-4">
-            <div class="card" style="width: 18rem;">
+            <div class="card mb-3" style="width: 18rem;">
             <div class="card-header">
                 Coming Soon Features
             </div>
@@ -74,10 +73,40 @@
                 <li class="list-group-item">etc.</li>
             </ul>
             </div>
-            {{-- [soon] PROFILE? OVERVIEW --}}
+            {{-- Suggestions --}}
+            @if ($suggested_users)
+                <div class="row">
+                    <div class="col-auto">
+                        <p class="fw-bold text-secondary">Suggestions for You</p>
+                    </div>
+                    <div class="col text-end">
+                        <a href="#" class="fw-bold text-dark text-decoration-none">See all</a>
+                    </div>
+                </div> 
 
-            {{-- [soon] Suggestions or ranking --}}
-
+                @foreach ($suggested_users as $user)
+                    <div class="row align-items-center mb-3">
+                        <div class="col-auto">
+                            <a href="{{ route('profile.show', $user->id) }}">
+                                @if ($user->avatar)
+                                    <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="rounded-circle avatar-sm">
+                                @else
+                                    <i class="fa-solid fa-circle-user text-secondary icon-sm"></i>
+                                @endif
+                            </a>
+                        </div>
+                        <div class="col ps-0 text-trancate">
+                            <a href="{{ route('profile.show', $user->id) }}" class="text-decoration-none text-dark fw-bold">{{ $user->name }}</a>
+                        </div>
+                        <div class="col-auto">
+                            <form action="{{ route('follow.store', $user->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="border-0 bg-transparent p-0 text-primary btn-sm">Follow</button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 

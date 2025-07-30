@@ -14,20 +14,46 @@
       <div class="col-auto p-2">
         @if (Auth::user()->id === $user->id)
             <a href="{{ route('profile.edit') }}" class="btn btn-outline-secondary btn-sm fw-bold">Edit Profile</a>
-        {{-- [soon] @else
-            follow following --}}
+        @else
+            @if ($user->isFollowed())
+              <form action="{{ route('follow.destroy', $user->id) }}" method="post" class="d-inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-secondary btn-sm fw-bold">Following</button>
+              </form>  
+            @else
+              <form action="{{ route('follow.store', $user->id) }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-primary btn-sm fw-bold">Follow</button>
+              </form>
+            @endif
         @endif
       </div>
     </div>
 
-
-    <div class="row mb-3 w-100 text-start">
+    <div class="row mb-2 w-100 text-start">
+      {{-- How many books --}}
       <div class="col-auto">
-        {{-- profile.show --}}
         <a href="#bookshelf" class="text-decoration-none text-dark">
           <strong>{{ $user->books->count() }}</strong> {{ $user->books->count() == 1 ? 'book ': 'books' }}
         </a>
       </div>
+      {{-- How many followers --}}
+      <div class="col-auto">
+        <a href="{{ route('profile.followers', $user->id) }}" class="text-decoration-none text-dark">
+          <strong>{{ $user->followers->count() }}</strong> {{ $user->followers->count() == 1 ? 'follower':'followers' }}
+        </a>
+      </div>
+      {{-- How many following --}}
+      <div class="col-auto">
+        <a href="{{ route('profile.following', $user->id) }}" class="text-decoration-none text-dark">
+          <strong>{{ $user->following->count() }}</strong> following
+        </a>
+      </div>
+    </div>
+    {{-- follower & following --}}
+    <div class="row mb-3 w-100 text-start">
+      {{-- How many booklings --}}
       <div class="col-auto">
         <a href="#" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#show-booklings-modal" title="Booklings I've Raised">
           @if ($user->finishedCreatures->count() === 0)
@@ -39,13 +65,6 @@
         {{-- include action modal here --}}
          @include('users.profile.modals.action')
       </div>
-      {{-- follower following
-      <div class="col-auto">
-        
-      </div>
-      <div class="col-auto">
-        
-      </div> --}}
     </div>
 
     <p class="fw-bold w-100 text-start">{{ $user->introduction }}</p>
