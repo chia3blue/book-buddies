@@ -68,7 +68,6 @@
   object-fit: cover;
 }
 
-
 .image-lg {
   width: 9rem;
   height: 9rem;
@@ -87,7 +86,8 @@
   transition: transform 0.3s;
 }
 
-.book-img:hover {
+.book-img:hover,
+.book-img-sm:hover {
   transform: scale(1.05);
 }
 
@@ -117,4 +117,12 @@
     width: 70%;  /* スマホでちょうど良いサイズに調整 */
     margin-bottom: 1rem;
   }
+}
+
+/* Admin */
+.book-img-sm {
+  height: 9rem;
+  width: auto;
+  object-fit: cover;
+  transition: transform 0.3s;
 }

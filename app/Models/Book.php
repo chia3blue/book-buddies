@@ -5,8 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
+// soft delete
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+
 class Book extends Model
 {
+    use SoftDeletes;
+
     # To get the ownew of the book post
     public function user()
     {

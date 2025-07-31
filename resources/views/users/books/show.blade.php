@@ -19,10 +19,7 @@
         @if ($book->cover_photo)
             <img src="{{ $book->cover_photo }}" alt="{{ $book->title }}" class="w-75">
         @else
-            <div class="d-flex flex-column justify-content-center align-items-center" style="height: 300px;">
-              <i class="fa-regular fa-image text-secondary icon-lg"></i>
-              <p class="text-muted">No Cover Photo</p>
-            </div>
+            <img src="{{ asset('images/no-image.png') }}" alt="No image" class="w-75">
         @endif
         
       </div>

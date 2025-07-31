@@ -7,9 +7,9 @@
   
   <a href="{{ route('book.show', $book->id) }}" class="text-decoration-none">
     @if ($book->cover_photo)
-      <img src="{{ $book->cover_photo }}" alt="{{ $book->title }}" class="w-50">
+      <img src="{{ $book->cover_photo }}" alt="{{ $book->title }}" class="img-fluid w-50">
     @else
-      <i class="fa-regular fa-image fa-10x text-secondary d-block text-center"></i>
+      <img src="{{ asset('images/no-image.png') }}" alt="No image" class="img-fluid w-50">
     @endif
   </a>
 </div>

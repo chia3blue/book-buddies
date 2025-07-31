@@ -128,7 +128,7 @@
                                 <a href="{{ route('admin.users') }}" class="list-group-item {{ request()->is('admin/users')? 'active' : '' }}">
                                     <i class="fa-solid fa-user"></i> Users
                                 </a>
-                                <a href="#" class="list-group-item {{ request()->is('admin/books')? 'active' : '' }}">
+                                <a href="{{ route('admin.books') }}" class="list-group-item {{ request()->is('admin/books')? 'active' : '' }}">
                                     <i class="fa-solid fa-book"></i> Book Posts
                                 </a>
                                 <a href="{{ route('admin.creatures') }}" class="list-group-item {{ request()->is('admin/creatures')? 'active' : '' }}">

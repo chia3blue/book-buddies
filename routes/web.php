@@ -12,7 +12,7 @@ use App\Http\Controllers\FollowController;
 
 # Admin Controllers
 use App\Http\Controllers\Admin\UsersController;
-// use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\Admin\CreaturesController;
 
 // Route::get('/', function () {
@@ -52,13 +52,15 @@ Route::group(['middleware' => 'auth'], function(){
 
     //Admin
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
-        //User
+        //Users
         Route::get('/users', [UsersController::class, 'index'])->name('users');
         Route::delete('/users/{user_id}/deactivate', [UsersController::class, 'deactivate'])->name('users.deactivate');
         Route::patch('/users/{user_id}/activate', [UsersController::class, 'activate'])->name('users.activate');
 
-        //Book
-        // Route::get('/books', [BooksController::class, 'index'])->with('books');
+        // Books
+        Route::get('/books', [BooksController::class, 'index'])->name('books');
+        Route::delete('/books/{book_id}/hide', [BooksController::class, 'hide'])->name('books.hide');
+        Route::patch('/books/{book_id}/unhide', [BooksController::class, 'unhide'])->name('books.unhide');
 
         //Creature
         Route::get('/creatures', [CreaturesController::class, 'index'])->name('creatures');

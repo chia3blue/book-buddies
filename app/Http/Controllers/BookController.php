@@ -153,7 +153,8 @@ class BookController extends Controller
         // 投稿に紐づくモンスター（user_creature_id）を取得
         $userCreature = $book->userCreature;
 
-        $book->delete(); // 本を削除
+        // $book->delete(); // 本を削除
+        $book->forceDelete();
 
         // 「育成中」のモンスターのみステージを再評価（紐づいていれば）
         if ($userCreature && $userCreature->current) {

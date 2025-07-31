@@ -11,7 +11,7 @@
       <table class="table table-hover align-middle bg-white border text-center text-secondary">
         <thead class="small table-warning text-secondary">
           <tr>
-            <th>#</th>
+            <th>ID</th>
             <th>NAME</th>
             <th>COUNT</th>
             <th>CREATED AT</th>
