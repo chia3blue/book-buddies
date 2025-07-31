@@ -10,7 +10,8 @@ class Book extends Model
     # To get the ownew of the book post
     public function user()
     {
-        return $this->belongsTo(User::class);
+        // return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withTrashed();
     }
 
     # 各本の育成中モンスターの記録に紐づけるため

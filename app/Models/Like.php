@@ -11,11 +11,11 @@ class Like extends Model
 
     // public function user()
     // {
-    //     return $this->belongsTo(User::class);
+    //     return $this->belongsTo(User::class)->withTrashed();
     // }
 
     // public function book()
     // {
-    //     return $this->belongsTo(Book::class);
+    //     return $this->belongsTo(Book::class)->withTrashed();
     // }
 }

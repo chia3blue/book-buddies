@@ -5,7 +5,7 @@
     <span class="text-muted small">&nbsp;by {{ $book->author_name }}</span>
   </p>
   
-  <a href="{{ route('book.show', $book->id) }}">
+  <a href="{{ route('book.show', $book->id) }}" class="text-decoration-none">
     @if ($book->cover_photo)
       <img src="{{ $book->cover_photo }}" alt="{{ $book->title }}" class="w-50">
     @else

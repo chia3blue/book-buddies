@@ -54,6 +54,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
         //User
         Route::get('/users', [UsersController::class, 'index'])->name('users');
+        Route::delete('/users/{user_id}/deactivate', [UsersController::class, 'deactivate'])->name('users.deactivate');
+        Route::patch('/users/{user_id}/activate', [UsersController::class, 'activate'])->name('users.activate');
 
         //Book
         // Route::get('/books', [BooksController::class, 'index'])->with('books');

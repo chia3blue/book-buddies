@@ -73,15 +73,9 @@
 
                             {{-- User nav --}}
                             <li class="nav-item dropdown">
-
                                 <button id="account-dropdown" class="btn shadow-none nav-link" data-bs-toggle="dropdown">
-                                    {{-- [soon] if分岐 user avatar --}}
                                     <i class="fa-regular fa-face-smile icon-sm"></i>
                                 </button>
-
-                                {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="fa-regular fa-face-smile icon-sm"></i>
-                                </a> --}}
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="account-dropdown">
                                     {{-- Admin Controls --}}
@@ -140,9 +134,9 @@
                                 <a href="{{ route('admin.creatures') }}" class="list-group-item {{ request()->is('admin/creatures')? 'active' : '' }}">
                                     <i class="fa-solid fa-ghost"></i> Creatures
                                 </a>
-                                {{-- [soon]  --}}
-                                <a href="#" class="list-group-item">
-                                    <i class="fa-solid fa-bullhorn"></i> Announcements
+                                {{-- [soon] Announcements  --}}
+                                <a href="#" class="list-group-item {{ request()->is('admin/announcements')? 'active' : '' }}">
+                                    <i class="fa-solid fa-bullhorn"></i> Announcements<br> [Coming Soon Feature]
                                 </a>
                             </div>
                         </div>
