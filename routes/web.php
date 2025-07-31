@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::delete('/follow/{user_id}/destroy', [FollowController::class, 'destroy'])->name('follow.destroy');
 
     //Admin
-    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function(){
         //Users
         Route::get('/users', [UsersController::class, 'index'])->name('users');
         Route::delete('/users/{user_id}/deactivate', [UsersController::class, 'deactivate'])->name('users.deactivate');

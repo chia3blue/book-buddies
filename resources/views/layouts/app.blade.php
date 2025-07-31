@@ -78,11 +78,12 @@
                                 </button>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="account-dropdown">
-                                    {{-- Admin Controls --}}
-                                    <a href="{{ route('admin.users') }}" class="dropdown-item"><i class="fa-solid fa-user-gear"></i> Admin</a>
+                                    @can('admin')
+                                       {{-- Admin Controls --}}
+                                        <a href="{{ route('admin.users') }}" class="dropdown-item"><i class="fa-solid fa-user-gear"></i> Admin</a>
 
-                                    <hr class="dropdown-divider">
-
+                                        <hr class="dropdown-divider"> 
+                                    @endcan
                                     {{-- Profile --}}
                                     <a href="{{ route('profile.show', Auth::user()->id) }}" class="dropdown-item"><i class="fa-regular fa-user"></i> Profile</a>
 
