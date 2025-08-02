@@ -71,7 +71,7 @@ class BookController extends Controller
         // 投稿数に応じてステージ進化（2冊ごと、最大6）
         $bookCount = $current->books()->count();
         // $newStage = min(6, floor($bookCount / 2) + 1);
-        // 検証用-1冊で1 stage up
+        // 開発用-1冊で1 stage up
         $newStage = min(6, floor($bookCount / 1));
 
         $changed = false;

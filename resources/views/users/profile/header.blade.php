@@ -1,15 +1,19 @@
 <div class="row mb-5">
   <div class="col-3 text-center">
-    @if ($user->avatar)
-        <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="img-thumbnail rounded-circle d-block mx-auto avatar-lg">
-    @else
-        <i class="fa-regular fa-face-smile text-secondary b-block text-center icon-lg"></i>
-    @endif
+    <a href="{{ route('profile.show', $user->id) }}" class="text-decoration-none">
+      @if ($user->avatar)
+          <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="img-thumbnail rounded-circle d-block mx-auto avatar-lg">
+      @else
+          <i class="fa-regular fa-face-smile text-secondary b-block text-center icon-lg"></i>
+      @endif
+    </a>
   </div>
   <div class="col-6 d-flex flex-column align-items-center">
     <div class="row mb-3">
       <div class="col-auto">
-        <h2 class="display-6 mb-0">{{ $user->name }}</h2>
+        <a href="{{ route('profile.show', $user->id) }}" class="text-decoration-none text-dark">
+          <h2 class="display-6 mb-0">{{ $user->name }}</h2>
+        </a>
       </div>
       <div class="col-auto p-2">
         @if (Auth::user()->id === $user->id)
@@ -34,7 +38,7 @@
     <div class="row mb-2 w-100 text-start">
       {{-- How many books --}}
       <div class="col-auto">
-        <a href="#bookshelf" class="text-decoration-none text-dark">
+        <a href="{{ route('profile.books', $user->id) }}" class="text-decoration-none text-dark">
           <strong>{{ $user->books->count() }}</strong> {{ $user->books->count() == 1 ? 'book ': 'books' }}
         </a>
       </div>

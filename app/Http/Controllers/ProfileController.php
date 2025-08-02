@@ -65,4 +65,13 @@ class ProfileController extends Controller
         return view('users.profile.following')->with('user', $user);
     }
 
+    public function books($id)
+    {
+        $user = $this->user->findOrFail($id);
+        $books = $user->books()->paginate(10);
+        return view('users.profile.books')
+                        ->with('user', $user)
+                        ->with('books', $books);
+    }
+
 }
