@@ -149,5 +149,32 @@
             </div>
         </main>
     </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="text-decoration-none back-to-top" role="button" aria-label="Back to Top" title="Back to Top">
+        <i class="fa-solid fa-circle-up fa-3x text-secondary"></i>
+    </a>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const btn = document.querySelector('.back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 1500) {
+                    btn.style.display = 'block';
+                } else {
+                    btn.style.display = 'none';
+                }
+            });
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
