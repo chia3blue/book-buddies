@@ -43,7 +43,8 @@
         </h5>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete <span class="fw-bold">{{ $creature->name }}</span></p>
+        <p class="text-center"><i class="fa-solid fa-triangle-exclamation text-danger fa-4x"></i></p>
+        <p>Are you sure you want to delete <span class="fw-bold">{{ $creature->name }}</span> ?</p>
         <p>This action will affect all the books under this creature. books without a creature will change to default creature.</p>      
       </div>
       <div class="modal-footer border-0">

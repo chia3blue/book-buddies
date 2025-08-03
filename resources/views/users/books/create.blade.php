@@ -53,7 +53,7 @@
                 <i class="fa-solid fa-ghost me-2"></i>Choose a bookling
               </label>
               <select name="creature_id" id="creature-id" class="form-select">
-                <option value="">Default</option>
+                <option value="">Default (Unknown Bookling)</option>
                 @if ($all_creatures)
                   @foreach ($all_creatures as $creature)
                     <option value="{{ $creature->id }}">{{ $creature->name }}</option>

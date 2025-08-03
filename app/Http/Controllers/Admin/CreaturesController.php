@@ -55,7 +55,6 @@ class CreaturesController extends Controller
 
         $this->creature->save();
 
-        // [later] リダイレクト先 showへ変更
         return redirect()->route('admin.creatures');
     }
 

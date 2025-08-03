@@ -14,11 +14,21 @@
           @if ($user->finishedCreatures->isNotEmpty())
             <div class="d-flex flex-wrap gap-3">
               @foreach ($user->finishedCreatures as $fc)
+                @php
+                  $stage = 6;
+                  $creature = $fc->creature;
+                  $imageBase64 = $creature?->{'image_stage_' . $stage};
+                  $creatureName = $creature->name ?? 'Unknown Bookling';
+                  $imageSrc = $imageBase64
+                              ? $imageBase64
+                              : asset('images/default/stage_' . $stage . '.png');
+                @endphp
+
                 <div class="text-center">
-                  <img src="{{ $fc->creature->{'image_stage_6'} ?? asset('images/default_creature.png') }}"
-                       alt="{{ $fc->creature->name }}"
-                       class="img-thumbnail rounded-circle image-raised-bookling">
-                  <div class="small mt-1 fw-bold">{{ $fc->creature->name }}</div>
+                  <img src="{{ $imageSrc }}"
+                      alt="{{ $creatureName }}"
+                      class="img-thumbnail rounded-circle image-raised-bookling">
+                  <div class="small mt-1 fw-bold">{{ $creatureName }}</div>
                 </div>
               @endforeach
             </div>

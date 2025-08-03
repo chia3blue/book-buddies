@@ -48,12 +48,23 @@ class UserCreature extends Model
      */
     public function getCurrentImageUrlAttribute()
     {
-        if (!$this->creature) {
-            return asset('images/default_creature.png');
-        }
-
+        // 通常のモンスターが存在すれば、それを使う
+    if ($this->creature) {
         $field = 'image_stage_' . $this->stage;
         return asset($this->creature->$field ?? 'images/default_creature.png');
+    }
+
+    // creature_id が null の場合 → デフォルト画像を段階別に出し分け
+    $defaultImages = [
+        1 => 'images/default/stage_1.png',
+        2 => 'images/default/stage_2.png',
+        3 => 'images/default/stage_3.png',
+        4 => 'images/default/stage_4.png',
+        5 => 'images/default/stage_5.png',
+        6 => 'images/default/stage_6.png',
+    ];
+
+    return asset($defaultImages[$this->stage] ?? 'images/default_creature.png');
     }
 
     # 各本の育成中モンスターの記録に紐づけるため

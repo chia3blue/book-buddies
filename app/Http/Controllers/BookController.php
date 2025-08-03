@@ -44,11 +44,11 @@ class BookController extends Controller
         // 現在育成中のモンスターを確認
         $current = $user->userCreatures()->where('current', true)->first();
 
+        // 初回 or 育成完了後、新しい育成を開始
         if (!$current) {
-            // 初回 or 完了後、新しい育成を開始
             $current = UserCreature::create([
                 'user_id' => $user->id,
-                'creature_id' => $request->creature_id, // モンスター選択がある場合
+                'creature_id' => $request->creature_id, // モンスター選択。未選択なら null が入る
                 'stage' => 1,
                 'current' => true,
             ]);

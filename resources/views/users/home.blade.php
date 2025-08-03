@@ -17,7 +17,7 @@
                 <div class="text-center">
                     <h2>Share Book Posts</h2>
                     <p class="text-secondary">When you share book posts. they'll appear on your profile.</p>
-                    <a href="#" class="text-decoration-none">Share your first book post.</a>
+                    <a href="{{ route('book.create') }}" class="text-decoration-none">Share your first book post.</a>
                 </div>
             @endforelse
         </div>
@@ -73,6 +73,7 @@
                 <li class="list-group-item">etc.</li>
             </ul>
             </div>
+
             {{-- Suggestions --}}
             @if ($suggested_users)
                 <div class="row">
@@ -109,26 +110,5 @@
             @endif
         </div>
     </div>
-
-
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 
 @endsection
