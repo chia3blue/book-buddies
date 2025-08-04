@@ -20,7 +20,6 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     {{-- Custom CSS --}}
-    {{-- asset書くとpabulicフォルダが開ける --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body class="base-bg">
@@ -36,9 +35,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
+                    {{-- Search bar --}}
+                    @auth
+                        {{-- This will not show up in the admin side --}}
+                        @if (!request()->is('admin/*'))
+                            <ul class="navbar-nav ms-auto">
+                                <form action="{{ route('search') }}" style="width: 300px">
+                                    <input type="search" name="search" class="form-control form-control-sm" placeholder="Search by user name">
+                                </form>
+                            </ul> 
+                        @endif
+                        
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

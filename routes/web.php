@@ -23,6 +23,9 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/', [HomeController::class, 'index'])->name('index');
+    // Search
+    Route::get('/people', [HomeController::class, 'search'])->name('search');
+
     // Book Post
     Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
     Route::post('/book/store', [BookController::class, 'store'])->name('book.store');

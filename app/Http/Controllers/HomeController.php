@@ -73,4 +73,11 @@ class HomeController extends Controller
             // y - offset/ index number
             // z - length/ how many
     }
+
+    // Search feature
+    public function search(Request $request)
+    {
+        $users = $this->user->where('name', 'like', '%' . $request->search . '%')->get();
+        return view('users.search')->with('users', $users)->with('search', $request->search);
+    }
 }
