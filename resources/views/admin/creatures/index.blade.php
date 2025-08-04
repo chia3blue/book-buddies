@@ -4,7 +4,7 @@
     
 @section('content')
 
-  <div class="mb-3"><a href="{{ route('admin.creatures.create') }}">Add a New Creature</a></div>
+  <div class="mb-3"><a href="{{ route('admin.creatures.create') }}">Add a New Bookling</a></div>
 
   <div class="row">
     <div class="col-7">
@@ -28,7 +28,7 @@
                 <td>
                   {{-- Edit Button --}}
                   {{-- link to edit creature page --}}
-                  <a href="#" class="btn btn-outline-warning btn-sm me-2">
+                  <a href="{{ route('admin.creatures.edit', $creature->id) }}" class="btn btn-outline-warning btn-sm me-2">
                     <i class="fa-solid fa-pen"></i>
                   </a>
 
@@ -42,7 +42,7 @@
                @include('admin.creatures.modals.action')
                @empty
                 <tr>
-                  <td colspan="5" class="lead text-muted text-center">No creatures found yet.</td>
+                  <td colspan="5" class="lead text-muted text-center">No booklings found yet.</td>
                 </tr>
           @endforelse
           {{-- <tr>

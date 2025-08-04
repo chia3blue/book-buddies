@@ -133,7 +133,7 @@
                                     <i class="fa-solid fa-book"></i> Book Posts
                                 </a>
                                 <a href="{{ route('admin.creatures') }}" class="list-group-item {{ request()->is('admin/creatures')? 'active' : '' }}">
-                                    <i class="fa-solid fa-ghost"></i> Creatures
+                                    <i class="fa-solid fa-ghost"></i> Booklings
                                 </a>
                                 {{-- [soon] Announcements  --}}
                                 <a href="#" class="list-group-item {{ request()->is('admin/announcements')? 'active' : '' }}">

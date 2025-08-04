@@ -67,8 +67,8 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/creatures', [CreaturesController::class, 'index'])->name('creatures');
         Route::get('/creatures/create', [CreaturesController::class, 'create'])->name('creatures.create');
         Route::post('/creatures/store', [CreaturesController::class, 'store'])->name('creatures.store');
-        // Route::get('/creatures/{creature_id}/edit', [CreaturesController::class, 'edit'])->name('creatures.edit');
-        // Route::patch('/creatures/{creature_id}/update', [CreaturesController::class, 'update'])->name('creatures.update');
+        Route::get('/creatures/{creature_id}/edit', [CreaturesController::class, 'edit'])->name('creatures.edit');
+        Route::patch('/creatures/{creature_id}/update', [CreaturesController::class, 'update'])->name('creatures.update');
         Route::delete('/creatures/{creature_id}/destroy', [CreaturesController::class, 'destroy'])->name('creatures.destroy');
     });
 });

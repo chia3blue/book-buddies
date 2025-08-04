@@ -40,8 +40,6 @@ class CreaturesController extends Controller
         #2. Save the data
         $this->creature->name = $request->name;
 
-        // $this->creature->image_stage_1 = 'data:image/' . $request->image_stage_1->extension() . ';base64,' . base64_encode(file_get_contents($request->image_stage_1));
-
         for($i = 1; $i <= 6; $i ++){
             $inputName = "image_stage_$i";
 
@@ -58,9 +56,44 @@ class CreaturesController extends Controller
         return redirect()->route('admin.creatures');
     }
 
-    public function edit($id){}
+    public function edit($id)
+    {
+        $creature = $this->creature->findOrFail($id);
 
-    public function update(Request $request, $id){}
+        return view('admin.creatures.edit')->with('creature', $creature);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $creature = $this->creature->findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|min:1|max:255',
+            'image_stage_1' => 'mimes:jpeg,jpg,png,gif|max:1048',
+            'image_stage_2' => 'mimes:jpeg,jpg,png,gif|max:1048',
+            'image_stage_3' => 'mimes:jpeg,jpg,png,gif|max:1048',
+            'image_stage_4' => 'mimes:jpeg,jpg,png,gif|max:1048',
+            'image_stage_5' => 'mimes:jpeg,jpg,png,gif|max:1048',
+            'image_stage_6' => 'mimes:jpeg,jpg,png,gif|max:1048',
+        ]);
+
+        $creature->name = $request->name;
+
+        for($i = 1; $i <= 6; $i ++){
+            $inputName = "image_stage_$i";
+
+            if ($request->hasFile($inputName)) {
+                $imageData = base64_encode(file_get_contents($request->file($inputName)));
+                $mime = $request->file($inputName)->extension();
+
+                $creature->{"image_stage_$i"} = "data:image/$mime;base64,$imageData";
+            }
+        }
+
+        $creature->save();
+
+        return redirect()->route('admin.creatures');
+    }
 
     public function destroy($id)
     {

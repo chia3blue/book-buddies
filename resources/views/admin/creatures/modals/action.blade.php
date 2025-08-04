@@ -39,13 +39,13 @@
     <div class="modal-content border-danger">
       <div class="modal-header border-danger">
         <h5 class="modal-title text-danger">
-          <i class="fa-solid fa-trash-can"></i> Delete Creature
+          <i class="fa-solid fa-trash-can"></i> Delete Bookling
         </h5>
       </div>
       <div class="modal-body">
         <p class="text-center"><i class="fa-solid fa-triangle-exclamation text-danger fa-4x"></i></p>
         <p>Are you sure you want to delete <span class="fw-bold">{{ $creature->name }}</span> ?</p>
-        <p>This action will affect all the books under this creature. books without a creature will change to default creature.</p>      
+        <p>This action will affect all the books under this bookling. Books without a bookling will change to default bookling.</p>      
       </div>
       <div class="modal-footer border-0">
         <form action="{{ route('admin.creatures.destroy', $creature->id) }}" method="post">
