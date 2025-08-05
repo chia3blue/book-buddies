@@ -17,7 +17,11 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+
+    {{-- Updated Bootstrap & JS --}}
+    <link rel="stylesheet" href="{{ asset('css/app-C7NydqTG.css') }}">
+    <script src="{{ asset('app-BDAque31.js') }}"></script>
 
     {{-- Custom CSS --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
