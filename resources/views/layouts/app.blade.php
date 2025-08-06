@@ -21,7 +21,7 @@
 
     {{-- Updated Bootstrap & JS --}}
     <link rel="stylesheet" href="{{ asset('css/app-C7NydqTG.css') }}">
-    <script src="{{ asset('app-BDAque31.js') }}"></script>
+    <script src="{{ asset('js/app-BDAque31.js') }}"></script>
 
     {{-- Custom CSS --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
