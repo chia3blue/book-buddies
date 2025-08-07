@@ -105,12 +105,20 @@
       </p>
 
       @if ($stage === 6)
-        <p class="fw-bold text-success">You've Reached the Last Stage!</p>
+        @if (Auth::user()->id === $user->id)
+          <p class="fw-bold text-success">You've Reached the Last Stage!</p>
+        @else
+          <p class="fw-bold text-success">{{ $user->name }} has Reached the Last Stage!</p>  
+        @endif
       @endif
     @else
-      <a href="{{ route('book.create') }}" class="btn btn-outline-primary mt-1">
+      @if (Auth::user()->id === $user->id)
+        <a href="{{ route('book.create') }}" class="btn btn-outline-primary mt-1">
         Let's add a new book and select a bookling!
-      </a>
+        </a>
+      @else
+        <p>{{ $user->name }} hasn’t selected a bookling yet.</p>
+      @endif
     @endif
   </div>
 
