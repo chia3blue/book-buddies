@@ -1,66 +1,119 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚 Book Buddies - Reading Record Sharing App for Children(Built with Laravel)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Book Buddies is a web application designed for elementary school children to record and share their reading experiences, similar to Instagram. This app is intended for use in schools and encourages students to post reading records by introducing an evolving character system called **Bookling**, which evolves as students post more. Once evolution is complete, students can keep their Bookling character as a reward. 
 
-## About Laravel
+The application also helps promote IT literacy among children and includes an admin panel intended for teachers to manage users and monitor student activity.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This app is based on an Instagram clone created during an online course under instructor guidance. To acquire practical, job-ready skills, I independently handled the entire process from planning and design to coding, Git/GitHub, and deployment.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✅ Features
 
-## Learning Laravel
+- User registration and login
+- CRUD functionality for posts(with image upload/base64)
+- User search function
+- Like and comment features
+- Follow/unfollow functionality
+- Admin panel for teachers
+- Bookling character evolves based on post count
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Tech Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Framework: Laravel 11.x
+- Frontend: Blade template, Bootstrap 5.2.3, HTML & CSS
+- Database: MySQL 8.0.40
+- Authentication: Laravel UI (login, logout, user registration)
+- Development environment: MAMP
+- Others:
+  - PHP 8.3.14
+  - Validation
+  - Base64 encoding used for image upload, update, and display
+  - Font Awesome 6.7.2
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 💻 Local Setup
 
-## Laravel Sponsors
+Clone the repository and perform basic Laravel setup to run the project.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+## 📸 Screenshots / スクリーンショット
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Timeline View / タイムライン画面
+<img src="screenshots/timeline.jpg" alt="Timeline screen" width="800">
 
-## Contributing
+EN:  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+The timeline shows the latest posts from users you follow. Each post includes an image, caption, like button, and comments—offering a core social media experience.
 
-## Code of Conduct
+**JP（日本語）：**  
+ユーザーがフォローしている他のユーザーの投稿が、最新順にタイムラインとして表示されます。画像・テキスト・「いいね」・コメント機能など、SNSの基本要素を一画面で確認できます。
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Post Creation View / 投稿作成画面
+<img src="screenshots/create-post.png" alt="post creation screen" width="800">
 
-## Security Vulnerabilities
+EN:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Logged-in users can create posts by entering text and images and selecting a Bookling. Created posts can be viewed on the user’s My Page and in the post list, and can be edited or deleted later.
 
-## License
+JP（日本語）：  
+ログインユーザーは、本文・画像を入力、Booklingを選択することで投稿を作成できます。作成した投稿は、マイページや投稿一覧画面で確認でき、後から編集や削除も可能です。
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Profile View / プロフィール画面
+<img src="screenshots/profile.jpg" alt="Profile screen" width="800">
+EN:
+
+On the user profile, the self-introduction, number of posts, number of followers, number of followings, number of Booklings obtained, and Booklings currently being raised are displayed.
+Posts can be viewed in a bookshelf format.
+Also, by clicking “( ) Booklings Have Grown Up!”, users can view the obtained Booklings as images.
+
+JP（日本語）：  
+ユーザーのプロフィールでは、自己紹介文、投稿数、フォロワー数、フォロー数、獲得したBookling数、育成中のBooklingが表示され、投稿の一覧は本棚形式で閲覧可能です。また、「（）Booklings Have Grown Up!」をクリックすると獲得したBooklingを画像で確認できます。
+
+### Admin Dashboard View / アドミン管理画面
+<img src="screenshots/admin-bookling.jpg" alt="Admin screen" width="800">
+EN:
+
+From the admin-only dashboard, it is possible to set the image for Booklings. Users and posts can be displayed in a list, and their visibility can be toggled on or off. This feature can be used to handle inappropriate posts and manage the overall system.
+
+JP（日本語）：  
+管理者専用のダッシュボードから、Booklingのイメージ画像設定が可能です。ユーザーや投稿を一覧表示し、表示・非表示の切り替えも可能で、不適切な投稿への対処や全体の管理に活用できます。
+
+
+
+> Japanese Description（以下は日本語での説明です）
+
+# 📚 Book Buddies - 小学生向け読書記録SNS
+
+**Book Buddies** は、小学校低学年の児童を対象にした、読書記録を投稿・共有するSNS Webアプリです。Instagramのように写真付きで読書感想を投稿できる仕組みで、学校単位での利用を想定しています。
+
+児童が投稿した読書記録投稿の数に応じて、「**Bookling**」というキャラクターが進化し、最終形態に達したキャラクターを収集できる仕組みになっています。これにより、読書記録投稿へのモチベーションを高めることを狙っています。また、IT教育の一環としても役立つよう設計されています。
+
+管理者（先生）用にアドミン機能も実装されており、そこからBooklingの追加、編集ができます。
+
+このアプリは、オンライン講座で講師の指導のもと作成したInstagramクローンを参考にしています。実務に即したスキルを身につけるために、企画から設計、コーディング、Git/GitHub、デプロイまで一連の工程を自ら手がけました。
+
+## ✅ 主な機能
+
+- ユーザー登録・ログイン機能
+- 投稿のCRUD機能
+- ユーザー検索機能
+- いいね・コメント機能
+- フォロー・フォロー解除機能
+- 教師向け管理者画面
+- Booklingキャラクターの進化システム（投稿数に応じて）
+
+## 🛠️ 使用技術
+
+- フレームワーク：Laravel 11.x
+- フロントエンド：Bladeテンプレート、Bootstrap 5.2.3, HTML & CSS
+- データベース：MySQL 8.0.40
+- 認証機能：Laravel UI（ログイン・ログアウト・ユーザー登録）
+- 開発環境：MAMP
+- その他：
+    - PHP 8.3.14
+    - バリデーション
+    - 画像データのアップロード、更新、表示にBase64エンコードを活用
+    - Font Awesome 6.7.2
+
+## 💻 セットアップ方法（ローカル環境）
+
+このリポジトリをクローンし、Laravelの基本的なセットアップ（依存パッケージのインストールや環境設定）を行うことで動作します。
